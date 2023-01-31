@@ -1,13 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Provider } from "react-redux";
+import {
+  createTheme,
+  ThemeProvider,
+  responsiveFontSizes,
+} from "@mui/material/styles";
 import { theme } from "./theme";
+import store from "./store";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider theme={createTheme(theme)}>
-      <App />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={responsiveFontSizes(createTheme(theme))}>
+        <App />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );
